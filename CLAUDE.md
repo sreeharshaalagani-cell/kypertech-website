@@ -30,13 +30,14 @@ strip) → `#accelerators` → `#resources` → `#contact` (CTA) → footer.
 
 ## Design system (defined as CSS variables in `:root` in index.html)
 - **Colors:** `--ink` #0d0f12 (dark sections), `--paper` #f5f2ea (light sections).
-  Brand accent is a two-tone VIOLET system anchored to the logo color #52459F:
-  - `--accent-deep` #52459F — the true brand purple. Used for elements where text
+  Brand accent is a two-tone VIOLET system — **accent-deep #5654CE (deep) /
+  accent #9B9BFF (bright) — Neon Periwinkle**:
+  - `--accent-deep` #5654CE — the deep brand violet. Used for elements where text
     sits ON the color (buttons, CTA band) paired with light text, and for kickers/
     borders on light backgrounds.
-  - `--accent` #8273c9 — a brighter violet (same hue, lifted). Used for text-level
+  - `--accent` #9B9BFF — a brighter violet (same hue, lifted). Used for text-level
     accents on DARK backgrounds (headline highlight, eyebrows, links, logo icon,
-    hover states) because #52459F is too dark to read on near-black.
+    hover states) because #5654CE is too dark to read on near-black.
   - `--warm` #f0a48c — peach tint, used only to distinguish the "Foundational"
     layer in the platform diagram. (Open style choice: could be swapped to a violet
     tint to keep the section fully monochrome-brand.)
