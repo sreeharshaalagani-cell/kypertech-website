@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kyper Tech helps Retail and CPG brands consult, strategize, build, and activate a Composable Customer Data Platform on their own data foundation, augmented with agentic AI.">
+<title>Kyper Tech — Composable Customer Data Platforms for Retail & CPG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d0f12; --ink-soft:#15181f; --ink-line:rgba(246,243,236,0.12);
+    --paper:#f5f2ea; --paper-soft:#eae4d6; --paper-line:rgba(13,15,18,0.10);
+    --accent:#8273c9; --accent-deep:#52459F; --warm:#f0a48c;
+    --on-dark:#f5f2ea; --on-dark-mut:rgba(245,242,234,0.60);
+    --on-light:#1a1c20; --on-light-mut:#5b574d;
+    --maxw:1180px; --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--on-light);font-family:"Hanken Grotesk",sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;line-height:1.04;letter-spacing:-0.02em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(13,15,18,0.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--ink-line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center}
+  .logo .brand{height:30px;width:103px;display:block}
+  .footer-logo .brand{height:34px;width:116px}
+  .navlinks{display:flex;gap:30px;align-items:center}
+  .navlinks a{color:var(--on-dark-mut);font-size:15px;font-weight:500;transition:color .25s}
+  .navlinks a:hover{color:var(--on-dark)}
+  .navcta{background:var(--accent-deep);color:var(--on-dark)!important;padding:11px 20px;border-radius:100px;font-weight:600!important;transition:transform .25s var(--ease),box-shadow .25s}
+  .navcta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(130,115,201,0.3)}
+  .menu-btn{display:none;background:none;border:0;color:var(--on-dark);font-size:26px;cursor:pointer}
+
+  .hero{background:var(--ink);color:var(--on-dark);position:relative;overflow:hidden;padding:96px 0 0}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 78% 12%,rgba(130,115,201,0.16),transparent 60%),radial-gradient(50% 45% at 8% 88%,rgba(110,160,255,0.10),transparent 60%);pointer-events:none}
+  .hero::after{content:"";position:absolute;inset:0;opacity:0.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none}
+  .hero .wrap{position:relative;z-index:2}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;border:1px solid var(--ink-line);padding:8px 16px;border-radius:100px;margin-bottom:30px}
+  .eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1.hero-h{font-size:clamp(2.4rem,6vw,4.9rem);max-width:19ch;font-weight:800}
+  h1.hero-h .hl{color:var(--accent)}
+  .hero-sub{font-size:clamp(1.05rem,2vw,1.32rem);color:var(--on-dark-mut);max-width:62ch;margin:30px 0 38px;line-height:1.55}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn-primary{background:var(--accent-deep);color:var(--on-dark);padding:15px 28px;border-radius:100px;font-weight:600;font-size:16px;display:inline-flex;align-items:center;gap:9px;transition:transform .3s var(--ease),box-shadow .3s}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(130,115,201,0.32)}
+  .btn-ghost{color:var(--on-dark);padding:15px 26px;border-radius:100px;font-weight:600;font-size:16px;border:1px solid var(--ink-line);transition:background .25s,border-color .25s}
+  .btn-ghost:hover{background:rgba(245,242,234,0.06);border-color:rgba(245,242,234,0.3)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink-line);margin-top:74px}
+  .stat{padding:28px 26px 34px;border-right:1px solid var(--ink-line)}
+  .stat:last-child{border-right:0}
+  .stat .num{font-family:"Bricolage Grotesque";font-size:clamp(1.45rem,2.3vw,2rem);font-weight:700;color:var(--on-dark);letter-spacing:-0.03em}
+  .stat .lbl{color:var(--on-dark-mut);font-size:14px;margin-top:8px;max-width:26ch;line-height:1.45}
+
+  .sec-pad{padding:104px 0}
+  .kicker{display:inline-block;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-deep);font-weight:700;margin-bottom:18px}
+  .dark .kicker{color:var(--accent)}
+  .sec-title{font-size:clamp(2rem,4.4vw,3.3rem);max-width:20ch;font-weight:700}
+  .sec-lead{font-size:clamp(1.05rem,1.8vw,1.22rem);color:var(--on-light-mut);max-width:58ch;margin-top:20px}
+  .dark .sec-lead{color:var(--on-dark-mut)}
+
+  .position{background:var(--paper)}
+  .position .big{font-family:"Bricolage Grotesque";font-weight:600;font-size:clamp(1.5rem,3.2vw,2.5rem);line-height:1.22;max-width:25ch;letter-spacing:-0.02em}
+  .position .big em{font-style:normal;color:var(--accent-deep)}
+  .position-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .position-side p{color:var(--on-light-mut);margin-bottom:18px}
+  .position-side .tag{display:inline-block;font-size:14px;font-weight:600;color:var(--on-light);border:1px solid var(--paper-line);border-radius:100px;padding:7px 15px;margin:0 8px 10px 0}
+
+  /* HOW WE WORK */
+  .spec{background:var(--ink);color:var(--on-dark);overflow:hidden;position:relative}
+  .spec::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 60% at 85% 30%,rgba(130,115,201,0.12),transparent 60%);pointer-events:none}
+  .spec .wrap{position:relative;z-index:2}
+  .spec-head{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:end;margin-bottom:60px}
+  .pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:14px}
+  .stage{border:1px solid var(--ink-line);border-radius:16px;padding:26px 22px;background:rgba(245,242,234,0.02);position:relative;transition:transform .35s var(--ease),border-color .35s,background .35s}
+  .stage:hover{transform:translateY(-6px);border-color:rgba(130,115,201,0.5);background:rgba(130,115,201,0.04)}
+  .stage .step{font-family:"Bricolage Grotesque";font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.1em}
+  .stage h4{font-size:1.2rem;margin:14px 0 10px;color:var(--on-dark)}
+  .stage p{font-size:14.5px;color:var(--on-dark-mut);line-height:1.5}
+  .stage .arrow{position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:18px;z-index:3}
+  .stage:last-child .arrow{display:none}
+
+  /* ARCHITECTURE (abstracted) */
+  .arch-sec{background:var(--ink);color:var(--on-dark);position:relative}
+  .arch{margin-top:54px;display:flex;flex-direction:column;gap:14px;max-width:900px}
+  .layer{display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:center;border-radius:16px;padding:30px 34px;border:1px solid var(--ink-line);transition:transform .35s var(--ease),border-color .35s}
+  .layer:hover{transform:translateX(6px);border-color:rgba(130,115,201,0.4)}
+  .layer.eng,.layer.intel{background:rgba(130,115,201,0.06)}
+  .layer.found{background:rgba(240,164,140,0.07)}
+  .layer-label{display:flex;align-items:baseline;gap:14px}
+  .ll-num{font-family:"Bricolage Grotesque";font-weight:700;font-size:1rem;color:var(--accent);opacity:.8}
+  .ll-tag{font-family:"Bricolage Grotesque";font-weight:700;font-size:1.5rem;color:var(--on-dark)}
+  .layer-desc{font-size:15.5px;color:var(--on-dark-mut);line-height:1.55}
+  .arch-base{margin-top:8px;font-size:14.5px;color:var(--on-dark-mut);padding-left:4px}
+
+  /* CAPABILITIES */
+  .cap-sec{background:var(--paper-soft)}
+  .cap-frame{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:50px}
+  .frame-card{background:var(--paper);border:1px solid var(--paper-line);border-top:3px solid var(--accent-deep);border-radius:20px;padding:32px 30px;transition:transform .4s var(--ease),box-shadow .4s}
+  .frame-card:hover{transform:translateY(-5px);box-shadow:0 18px 44px rgba(13,15,18,0.09)}
+  .fc-tag{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--accent-deep);display:block;margin-bottom:12px}
+  .frame-card h4{font-size:1.4rem;color:var(--on-light);margin-bottom:10px}
+  .frame-card p{font-size:14.5px;color:var(--on-light-mut);line-height:1.55}
+  .cap2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+  .cap-col{background:var(--paper);border:1px solid var(--paper-line);border-radius:20px;padding:34px 32px}
+  .cap-col.alt{background:var(--ink);color:var(--on-dark);border-color:transparent}
+  .cc-head{margin-bottom:14px;padding-bottom:18px;border-bottom:1px solid var(--paper-line)}
+  .cap-col.alt .cc-head{border-color:var(--ink-line)}
+  .cc-tag{font-family:"Bricolage Grotesque";font-weight:700;font-size:1.5rem;display:block;color:var(--on-light)}
+  .cap-col.alt .cc-tag{color:var(--accent)}
+  .cc-head p{font-size:14px;color:var(--on-light-mut);margin-top:4px}
+  .cap-col.alt .cc-head p{color:var(--on-dark-mut)}
+  .cc-item{padding:16px 0;border-bottom:1px solid var(--paper-line)}
+  .cap-col.alt .cc-item{border-color:var(--ink-line)}
+  .cc-item:last-child{border-bottom:0}
+  .cc-item h4{font-size:1.18rem;margin-bottom:6px;color:var(--on-light)}
+  .cap-col.alt .cc-item h4{color:var(--on-dark)}
+  .cc-item p{font-size:14.5px;color:var(--on-light-mut);line-height:1.5}
+  .cap-col.alt .cc-item p{color:var(--on-dark-mut)}
+  .cc-item.highlight{background:rgba(130,115,201,0.12);border:1px solid rgba(130,115,201,0.35);border-radius:12px;padding:18px;margin-top:14px}
+  .cc-item.highlight h4{color:var(--accent)}
+  .support{margin-top:54px;padding-top:44px;border-top:1px solid var(--paper-line)}
+  .support .lbl{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--on-light-mut);margin-bottom:8px}
+  .support .note{color:var(--on-light-mut);font-size:15.5px;max-width:64ch;margin-bottom:28px}
+  .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .cap{background:var(--paper);border:1px solid var(--paper-line);border-radius:14px;padding:22px 20px;transition:transform .35s var(--ease),border-color .35s}
+  .cap:hover{transform:translateY(-4px);border-color:var(--accent-deep)}
+  .cap h4{font-size:1.08rem;margin-bottom:7px}
+  .cap p{font-size:13.5px;color:var(--on-light-mut);line-height:1.5}
+
+  /* ACCELERATORS */
+  .acc-sec{background:var(--ink-soft);color:var(--on-dark)}
+  .acc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:48px}
+  .acc{border:1px solid var(--ink-line);border-radius:14px;padding:24px 18px;transition:transform .35s var(--ease),border-color .35s}
+  .acc:hover{transform:translateY(-5px);border-color:rgba(130,115,201,0.5)}
+  .acc h4{font-size:1.04rem;color:var(--on-dark);margin-bottom:8px}
+  .acc p{font-size:12.5px;color:var(--on-dark-mut);line-height:1.45}
+  .acc-best{margin-top:36px;padding-top:28px;border-top:1px solid var(--ink-line)}
+  .acc-best .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-mut);font-weight:700;display:block;margin-bottom:16px}
+  .bp-chips{display:flex;flex-wrap:wrap;gap:10px}
+  .bp-chips span{font-size:13.5px;font-weight:600;color:var(--on-dark);background:rgba(245,242,234,0.05);border:1px solid var(--ink-line);border-radius:100px;padding:10px 18px;transition:border-color .3s,background .3s,transform .3s var(--ease)}
+  .bp-chips span:hover{border-color:rgba(130,115,201,0.5);background:rgba(130,115,201,0.07);transform:translateY(-2px)}
+
+  .resources{background:var(--paper);color:var(--on-light)}
+  .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px}
+  .res{border:1px solid var(--paper-line);border-radius:18px;padding:30px;transition:border-color .35s,transform .35s var(--ease)}
+  .res:hover{border-color:var(--accent-deep);transform:translateY(-5px)}
+  .res .rt{font-size:13px;color:var(--accent-deep);font-weight:700;letter-spacing:.06em}
+  .res h4{font-size:1.22rem;margin:12px 0 10px;color:var(--on-light)}
+  .res p{font-size:14.5px;color:var(--on-light-mut)}
+
+  .cta{background:var(--accent-deep);color:var(--on-dark);text-align:center;padding:110px 0}
+  .cta h2{font-size:clamp(2.2rem,5vw,3.8rem);max-width:18ch;margin:0 auto 22px;font-weight:800}
+  .cta p{font-size:1.15rem;max-width:52ch;margin:0 auto 36px;opacity:.78}
+  .cta .btn-dark{background:var(--ink);color:var(--accent);padding:16px 34px;border-radius:100px;font-weight:600;font-size:16.5px;display:inline-flex;align-items:center;gap:10px;transition:transform .3s var(--ease),box-shadow .3s}
+  .cta .btn-dark:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(13,15,18,0.28)}
+
+  footer{background:var(--ink);color:var(--on-dark);padding:70px 0 40px}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--ink-line)}
+  .foot-blurb{max-width:38ch;color:var(--on-dark-mut);margin-top:18px;font-size:15px}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+  .foot-col h5{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-mut);margin-bottom:16px;font-weight:600}
+  .foot-col a{display:block;color:var(--on-dark);font-size:15px;margin-bottom:11px;opacity:.82;transition:opacity .2s,color .2s}
+  .foot-col a:hover{opacity:1;color:var(--accent)}
+  .foot-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-top:28px;color:var(--on-dark-mut);font-size:14px}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .hero-anim{opacity:0;transform:translateY(22px);animation:rise .9s var(--ease) forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.31s}.d4{animation-delay:.44s}.d5{animation-delay:.6s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  @media(max-width:980px){
+    .layer{grid-template-columns:1fr;gap:10px;align-items:start}
+    .layer:hover{transform:none}
+    .acc-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:880px){
+    .navlinks{display:none}.menu-btn{display:block}
+    .position-grid,.spec-head{grid-template-columns:1fr;gap:30px}
+    .pipeline{grid-template-columns:1fr 1fr;gap:26px}.stage .arrow{display:none}
+    .cap2{grid-template-columns:1fr}
+    .cap-frame{grid-template-columns:1fr}
+    .cap-grid{grid-template-columns:1fr 1fr}
+    .res-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stat{border-right:1px solid var(--ink-line);border-bottom:1px solid var(--ink-line)}
+    .stat:nth-child(2n){border-right:0}
+    .stat:nth-last-child(-n+2){border-bottom:0}
+    .sec-pad{padding:78px 0}
+  }
+  @media(max-width:560px){
+    .acc-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr}
+    .stat{border-right:0;border-bottom:1px solid var(--ink-line)}
+    .stat:last-child{border-bottom:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- Kyper Tech logo (recolored: icon lime, wordmark off-white) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="kyperLogo" viewBox="0 0 335 98">
+    <path d="M52.7656 10.5469C60.9135 11.3446 68.6474 14.7159 74.8066 20.2432L72.2354 23.1084C65.5299 17.0909 56.7509 13.9098 47.7471 14.2344C38.7433 14.5589 30.2167 18.3641 23.9619 24.8486C17.7072 31.3332 14.2116 39.9915 14.2119 49.001C14.2123 58.0106 17.7085 66.6692 23.9639 73.1533C30.2192 79.6374 38.7462 83.4418 47.75 83.7656C56.7538 84.0894 65.5323 80.9067 72.2373 74.8887C78.9421 68.8706 83.0508 60.4862 83.6982 51.5C84.3457 42.5137 81.4819 33.6261 75.709 26.709L78.665 24.2422C83.692 30.2656 86.7322 37.6338 87.4648 45.3457L98 49.2158L87.4541 52.7676C86.5133 62.3726 82.0097 71.2924 74.8096 77.7549C68.6503 83.2832 60.9152 86.6531 52.7666 87.4512L48.8916 98L45.3428 87.4619C36.1871 86.5916 27.6124 82.4818 21.1924 75.8271C15.1214 69.5342 11.3902 61.3974 10.5449 52.7676L0 49.2158L10.5352 45.3457C11.3586 36.675 15.0942 28.496 21.1904 22.1758C27.6106 15.5197 36.1858 11.4075 45.3428 10.5371L48.8916 0L52.7656 10.5469ZM60.1172 43.6035L52.4541 52.8857L74.04 72.4209H59.1455L42.0928 58.6064L26.9824 72.4209V57.4189L53.749 37.7754L80.7314 18.5645L60.1172 43.6035ZM28.4941 59.1455V64.1094L74.2549 24.499L28.4941 59.1455ZM39.8262 45.6543L26.9824 54.9355V26.5508H39.8262V45.6543Z" fill="#8273c9"/>
+    <path d="M117.256 53.0938V6.20707H127.285V53.0938H117.256ZM124.094 28.7387L145.193 6.20707H158.542L136.271 28.7387H124.094ZM146.235 53.0938L123.963 28.7387H136.271L159.845 53.0938H146.235ZM179.165 53.0938V34.1437L161.712 6.20707H173.76L187.565 31.0179H181.9L195.64 6.20707H206.645L189.193 34.1437V53.0938H179.165ZM210.612 53.0938V6.20707H232.883C236.356 6.20707 239.33 6.81486 241.805 8.03044C244.323 9.24602 246.255 10.9392 247.601 13.1098C248.99 15.2805 249.684 17.8202 249.684 20.7289C249.684 23.6376 248.99 26.199 247.601 28.4131C246.211 30.6272 244.258 32.3638 241.74 33.6228C239.265 34.8383 236.313 35.4461 232.883 35.4461H218.557V27.7619H232.362C234.663 27.7619 236.443 27.1324 237.702 25.8734C239.005 24.571 239.656 22.8779 239.656 20.794C239.656 18.7102 239.005 17.0388 237.702 15.7798C236.443 14.5208 234.663 13.8913 232.362 13.8913H220.641V53.0938H210.612ZM254.365 53.0938V6.20707H264.393V53.0938H254.365ZM259.054 53.0938V45.4095H289.269V53.0938H259.054ZM259.054 32.9064V25.3525H286.99V32.9064H259.054ZM259.054 13.8913V6.20707H288.488V13.8913H259.054ZM294.423 53.0938V6.20707H315.392C318.778 6.20707 321.73 6.79316 324.248 7.96532C326.766 9.09407 328.72 10.7004 330.109 12.7842C331.498 14.8681 332.193 17.2992 332.193 20.0777C332.193 22.8128 331.498 25.2222 330.109 27.3061C328.72 29.3465 326.766 30.9528 324.248 32.125C321.73 33.2537 318.778 33.8181 315.392 33.8181H302.368V26.4595H315.131C317.519 26.4595 319.343 25.9168 320.602 24.8315C321.904 23.7027 322.555 22.1399 322.555 20.1428C322.555 18.1024 321.926 16.5612 320.667 15.5193C319.408 14.4339 317.563 13.8913 315.131 13.8913H304.452V53.0938H294.423ZM320.862 53.0938L302.042 28.7387H312.657L334.407 53.0938H320.862Z" fill="#f5f2ea"/>
+    <path d="M122.422 87.9053V70.9102H115.944V69.0218H131.051V70.9102H124.573V87.9053H122.422ZM135.573 87.9053V69.0218H137.724V87.9053H135.573ZM136.675 87.9053V86.0169H148.215V87.9053H136.675ZM136.675 79.0143V77.126H147.271V79.0143H136.675ZM136.675 70.9102V69.0218H148.005V70.9102H136.675ZM160.533 88.1675C159.239 88.1675 158.042 87.9315 156.94 87.4594C155.856 86.9698 154.912 86.2967 154.107 85.4399C153.303 84.5657 152.682 83.5429 152.245 82.3714C151.808 81.1824 151.59 79.8798 151.59 78.4636C151.59 77.0473 151.808 75.7534 152.245 74.582C152.682 73.393 153.294 72.3702 154.081 71.5134C154.886 70.6392 155.83 69.966 156.914 69.4939C158.015 69.0044 159.213 68.7596 160.507 68.7596C161.923 68.7596 163.191 69.0481 164.31 69.6251C165.446 70.2021 166.373 71.0151 167.09 72.0642C167.824 73.1133 168.279 74.3372 168.454 75.736H166.303C166.093 74.1798 165.473 72.9559 164.441 72.0642C163.427 71.155 162.124 70.7004 160.533 70.7004C159.187 70.7004 158.007 71.0326 156.992 71.697C155.978 72.3439 155.192 73.2531 154.632 74.4246C154.073 75.5786 153.793 76.9249 153.793 78.4636C153.793 80.0022 154.073 81.3573 154.632 82.5287C155.192 83.6827 155.978 84.5919 156.992 85.2563C158.007 85.9033 159.178 86.2267 160.507 86.2267C162.133 86.2267 163.462 85.7721 164.493 84.8629C165.542 83.9537 166.163 82.7298 166.355 81.1912H168.506C168.331 82.5899 167.877 83.8139 167.142 84.8629C166.425 85.912 165.499 86.7251 164.362 87.3021C163.243 87.879 161.967 88.1675 160.533 88.1675ZM173.285 87.9053V69.0218H175.436V87.9053H173.285ZM185.926 87.9053V69.0218H188.077V87.9053H185.926ZM174.386 77.126H186.871V79.0143H174.386V77.126ZM193.908 87.9053V69.0218H196.137L206.969 84.9154L206.654 84.9679V69.0218H208.7V87.9053H206.471L195.639 72.0117L195.954 71.9593V87.9053H193.908ZM222.583 88.1675C221.271 88.1675 220.065 87.9315 218.963 87.4594C217.879 86.9698 216.935 86.2879 216.131 85.4137C215.327 84.522 214.697 83.4817 214.242 82.2927C213.805 81.1037 213.587 79.8011 213.587 78.3849C213.587 76.514 213.971 74.853 214.741 73.4018C215.51 71.9505 216.568 70.814 217.914 69.9922C219.278 69.1705 220.825 68.7596 222.556 68.7596C224.322 68.7596 225.879 69.1705 227.225 69.9922C228.589 70.814 229.655 71.9505 230.425 73.4018C231.194 74.853 231.579 76.5228 231.579 78.4111C231.579 79.8274 231.351 81.13 230.897 82.3189C230.459 83.5079 229.839 84.5395 229.034 85.4137C228.23 86.2879 227.277 86.9698 226.176 87.4594C225.074 87.9315 223.877 88.1675 222.583 88.1675ZM222.556 86.2267C223.903 86.2267 225.083 85.8945 226.097 85.2301C227.129 84.5482 227.933 83.6128 228.51 82.4238C229.087 81.2349 229.375 79.8798 229.375 78.3587C229.375 76.855 229.087 75.5261 228.51 74.3722C227.95 73.2182 227.155 72.3177 226.123 71.6708C225.109 71.0238 223.92 70.7004 222.556 70.7004C221.193 70.7004 220.004 71.0238 218.99 71.6708C217.975 72.3177 217.189 73.2182 216.629 74.3722C216.07 75.5087 215.79 76.8375 215.79 78.3587C215.79 79.8973 216.07 81.2611 216.629 82.4501C217.206 83.6215 218.002 84.5482 219.016 85.2301C220.03 85.8945 221.21 86.2267 222.556 86.2267ZM236.46 87.9053V69.0218H238.611V87.9053H236.46ZM237.562 87.9053V86.0169H248.315V87.9053H237.562ZM259.398 88.1675C258.086 88.1675 256.88 87.9315 255.778 87.4594C254.694 86.9698 253.75 86.2879 252.946 85.4137C252.142 84.522 251.512 83.4817 251.058 82.2927C250.62 81.1037 250.402 79.8011 250.402 78.3849C250.402 76.514 250.787 74.853 251.556 73.4018C252.325 71.9505 253.383 70.814 254.729 69.9922C256.093 69.1705 257.641 68.7596 259.372 68.7596C261.137 68.7596 262.694 69.1705 264.04 69.9922C265.404 70.814 266.47 71.9505 267.24 73.4018C268.009 74.853 268.394 76.5228 268.394 78.4111C268.394 79.8274 268.166 81.13 267.712 82.3189C267.275 83.5079 266.654 84.5395 265.85 85.4137C265.045 86.2879 264.092 86.9698 262.991 87.4594C261.889 87.9315 260.692 88.1675 259.398 88.1675ZM259.372 86.2267C260.718 86.2267 261.898 85.8945 262.912 85.2301C263.944 84.5482 264.748 83.6128 265.325 82.4238C265.902 81.2349 266.191 79.8798 266.191 78.3587C266.191 76.855 265.902 75.5261 265.325 74.3722C264.766 73.2182 263.97 72.3177 262.938 71.6708C261.924 71.0238 260.735 70.7004 259.372 70.7004C258.008 70.7004 256.819 71.0238 255.805 71.6708C254.791 72.3177 254.004 73.2182 253.444 74.3722C252.885 75.5087 252.605 76.8375 252.605 78.3587C252.605 79.8973 252.885 81.2611 253.444 82.4501C254.021 83.6215 254.817 84.5482 255.831 85.2301C256.845 85.8945 258.025 86.2267 259.372 86.2267ZM281.901 88.1675C279.978 88.1675 278.308 87.7741 276.892 86.9873C275.475 86.2005 274.383 85.099 273.613 83.6827C272.844 82.249 272.459 80.5617 272.459 78.6209C272.459 76.6801 272.835 74.9754 273.587 73.5067C274.356 72.0205 275.414 70.8577 276.76 70.0185C278.124 69.1792 279.689 68.7596 281.455 68.7596C282.836 68.7596 284.086 69.0218 285.206 69.5464C286.342 70.0709 287.269 70.7965 287.986 71.7232C288.72 72.6499 289.166 73.7252 289.323 74.9491H287.173C286.998 73.6553 286.394 72.6237 285.363 71.8544C284.349 71.085 283.072 70.7004 281.534 70.7004C280.152 70.7004 278.946 71.0326 277.914 71.697C276.883 72.3439 276.079 73.2531 275.502 74.4246C274.942 75.5961 274.662 76.9774 274.662 78.5685C274.662 80.1596 274.951 81.5321 275.528 82.6861C276.122 83.8226 276.97 84.6968 278.072 85.3088C279.191 85.9208 280.528 86.2267 282.084 86.2267C283.151 86.2267 284.104 86.0781 284.943 85.7809C285.782 85.4662 286.543 84.9853 287.225 84.3384L289.376 85.1252C288.414 86.1393 287.304 86.8999 286.045 87.407C284.803 87.914 283.422 88.1675 281.901 88.1675ZM287.225 85.1252V79.0143L288.038 79.8274H282.058V77.939H289.376V85.1252H287.225ZM294.769 87.9053V69.0218H296.92V87.9053H294.769ZM302.74 87.9053V69.0218H304.89V87.9053H302.74ZM303.841 87.9053V86.0169H315.381V87.9053H303.841ZM303.841 79.0143V77.126H314.437V79.0143H303.841ZM303.841 70.9102V69.0218H315.171V70.9102H303.841ZM326.048 88.1413C323.845 88.1413 322.088 87.5993 320.777 86.5152C319.483 85.4312 318.722 83.8838 318.495 81.8731H320.593C320.785 83.3243 321.336 84.4171 322.245 85.1514C323.155 85.8858 324.413 86.253 326.022 86.253C327.386 86.253 328.409 85.9994 329.091 85.4924C329.79 84.9679 330.14 84.2073 330.14 83.2106C330.14 82.3539 329.904 81.672 329.432 81.1649C328.959 80.6579 328.225 80.2383 327.229 79.906L324.055 78.8045C322.446 78.245 321.257 77.5718 320.488 76.785C319.719 75.9807 319.334 74.9666 319.334 73.7427C319.334 72.7286 319.588 71.8544 320.095 71.12C320.602 70.3682 321.319 69.7824 322.245 69.3628C323.172 68.9432 324.247 68.7334 325.471 68.7334C327.36 68.7334 328.872 69.2317 330.009 70.2283C331.145 71.2074 331.801 72.6062 331.976 74.4246H329.877C329.65 73.1133 329.178 72.1516 328.461 71.5396C327.762 70.9277 326.748 70.6217 325.419 70.6217C324.16 70.6217 323.181 70.8752 322.481 71.3823C321.782 71.8893 321.432 72.6062 321.432 73.5329C321.432 74.3197 321.677 74.9491 322.167 75.4212C322.656 75.8933 323.417 76.3042 324.448 76.6539L327.832 77.8341C329.3 78.3412 330.402 79.0318 331.136 79.906C331.871 80.7628 332.238 81.8556 332.238 83.1844C332.238 84.758 331.696 85.982 330.612 86.8562C329.545 87.7129 328.024 88.1413 326.048 88.1413Z" fill="#f5f2ea"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo" aria-label="Kyper Tech home"><svg class="brand" role="img" aria-label="Kyper Tech"><use href="#kyperLogo"/></svg></a>
+    <nav class="navlinks">
+      <a href="#about">About</a>
+      <a href="#how">How We Work</a>
+      <a href="#platform">Platform</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#accelerators">Accelerators</a>
+      <a href="#contact" class="navcta">Get in Touch</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu">&#9776;</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow hero-anim d1"><span class="pulse"></span>Composable CDP · Data Foundations · Retail &amp; CPG</span>
+    <h1 class="hero-h hero-anim d2">A <span class="hl">Composable Customer Data Platform</span>, built on the data foundation you already own.</h1>
+    <p class="hero-sub hero-anim d3">Kyper Tech is a Data &amp; AI services company. We consult, strategize, build, and activate composable customer data platforms for retail and CPG brands — turning scattered data into a single Customer 360, augmented with agentic AI.</p>
+    <div class="hero-cta hero-anim d4">
+      <a href="#contact" class="btn-primary">Get in Touch →</a>
+      <a href="#platform" class="btn-ghost">See the platform</a>
+    </div>
+    <div class="stats hero-anim d5">
+      <div class="stat"><div class="num">End-to-end</div><div class="lbl">Consult, strategize, build &amp; activate — one partner</div></div>
+      <div class="stat"><div class="num">Composable</div><div class="lbl">On the data foundation you already own — no lock-in</div></div>
+      <div class="stat"><div class="num">CDP + AI</div><div class="lbl">Engagement driven by CDP platforms and agentic AI</div></div>
+      <div class="stat"><div class="num">Retail &amp; CPG</div><div class="lbl">Deep focus on the brands we serve</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="position sec-pad" id="about">
+  <div class="wrap position-grid">
+    <div class="reveal">
+      <span class="kicker">Who we are</span>
+      <p class="big">We turn your data foundation into a Composable Customer Data Platform — then drive engagement with agentic AI and leading <em>CDP platforms</em>.</p>
+    </div>
+    <div class="position-side reveal">
+      <p>Traditional packaged CDPs copy your customer data into a separate silo you don't fully control. A <strong>composable</strong> approach keeps the data on the foundation you already own — and assembles the right best-of-breed components on top of it.</p>
+      <p>Kyper Tech takes you there end to end. We ideate the data foundation, strategize the architecture, build the platform, and activate it — across a System of Insight that knows your customer and a System of Engagement that acts on that knowledge. To power engagement, we integrate agentic AI and partner with leading off-the-shelf CDP platforms — using whatever drives results, without locking you in.</p>
+      <div style="margin-top:8px">
+        <span class="tag">Composable CDP</span>
+        <span class="tag">Customer 360</span>
+        <span class="tag">Agentic AI</span>
+        <span class="tag">Retail &amp; CPG</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spec sec-pad dark" id="how">
+  <div class="wrap">
+    <div class="spec-head">
+      <div class="reveal">
+        <span class="kicker">How we work</span>
+        <h2 class="sec-title">From data foundation to activated intelligence</h2>
+      </div>
+      <p class="sec-lead reveal">Four phases, one outcome: a composable CDP that's yours to own — and smart enough to act.</p>
+    </div>
+    <div class="pipeline">
+      <div class="stage reveal"><div class="step">01</div><h4>Consult</h4><p>We ideate your data foundation — assessing sources, gaps, and goals to define what a composable CDP should do for your brand.</p><span class="arrow">→</span></div>
+      <div class="stage reveal"><div class="step">02</div><h4>Strategize</h4><p>We design the composable architecture: a warehouse-native blueprint of modular, best-of-breed components, with governance built in.</p><span class="arrow">→</span></div>
+      <div class="stage reveal"><div class="step">03</div><h4>Build</h4><p>We assemble the platform on your data foundation — integration, identity resolution, and a single trusted customer view.</p><span class="arrow">→</span></div>
+      <div class="stage reveal"><div class="step">04</div><h4>Activate</h4><p>We operationalize segmentation, personalization, and campaigns — driving engagement through leading CDP platforms and agentic AI that acts in real time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="arch-sec sec-pad dark" id="platform">
+  <div class="wrap">
+    <div class="reveal" style="max-width:700px">
+      <span class="kicker">What we build</span>
+      <h2 class="sec-title">The Composable Customer Data Platform</h2>
+      <p class="sec-lead">Three layers, assembled on your data foundation, that turn raw signals into customer value — governed end to end.</p>
+    </div>
+
+    <div class="arch reveal">
+      <div class="layer eng">
+        <div class="layer-label"><span class="ll-num">03</span><span class="ll-tag">Engagement</span></div>
+        <p class="layer-desc">Personalization, campaigns, and service that act on each customer across every channel.</p>
+      </div>
+      <div class="layer intel">
+        <div class="layer-label"><span class="ll-num">02</span><span class="ll-tag">Intelligence</span></div>
+        <p class="layer-desc">Segmentation, journey analysis, and predictive models that turn unified data into insight.</p>
+      </div>
+      <div class="layer found">
+        <div class="layer-label"><span class="ll-num">01</span><span class="ll-tag">Foundational</span></div>
+        <p class="layer-desc">A governed data hub that unifies, cleanses, and resolves your data into a single Customer 360.</p>
+      </div>
+      <p class="arch-base">Assembled on the data foundation you already own — modular, warehouse-native, and fully under your control.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cap-sec sec-pad" id="capabilities">
+  <div class="wrap">
+    <div class="reveal" style="max-width:720px">
+      <span class="kicker">Our capabilities</span>
+      <h2 class="sec-title">From strategy to activation — governed throughout</h2>
+      <p class="sec-lead">We bring the consulting and strategy to ideate and architect your platform, the governance and compliance to keep it trusted, and two systems that turn data into action.</p>
+    </div>
+
+    <div class="cap-frame">
+      <div class="frame-card reveal">
+        <span class="fc-tag">Across every engagement</span>
+        <h4>Consulting &amp; Strategy</h4>
+        <p>We ideate your data foundation and architect the right composable solution — from data strategy and platform selection to the target-state blueprint, before a line of code is written.</p>
+      </div>
+      <div class="frame-card reveal">
+        <span class="fc-tag">Across every engagement</span>
+        <h4>Data Governance &amp; Compliance</h4>
+        <p>Governance, data quality, consent, privacy, and stewardship — built into the foundation from day one, so your data stays trusted and compliant.</p>
+      </div>
+    </div>
+
+    <div class="cap2">
+      <div class="cap-col reveal">
+        <div class="cc-head"><span class="cc-tag">System of Insight</span><p>Know your customer</p></div>
+        <div class="cc-item"><h4>Identity Resolution</h4><p>Deterministic and probabilistic identity mapping, accelerated by our own code and UI tooling.</p></div>
+        <div class="cc-item"><h4>Customer 360</h4><p>A single 360° view of every customer, unifying data across all of your domains.</p></div>
+        <div class="cc-item"><h4>Vendor Integrations</h4><p>Integrations with third-party vendors that enrich your first-party data.</p></div>
+      </div>
+
+      <div class="cap-col alt reveal">
+        <div class="cc-head"><span class="cc-tag">System of Engagement</span><p>Act on what you know — through CDP platforms and agentic AI</p></div>
+        <div class="cc-item"><h4>Segmentation &amp; Audiences</h4><p>Algorithms and models — RFM, behavioral, and more — that segment customers and build activation-ready audiences.</p></div>
+        <div class="cc-item"><h4>Personalization &amp; Campaigns</h4><p>Campaign strategy and omni-channel personalization built to grow top-line revenue.</p></div>
+        <div class="cc-item"><h4>CDP Platform Partnerships</h4><p>We integrate leading off-the-shelf CDP and activation platforms to operationalize engagement at scale.</p></div>
+        <div class="cc-item highlight"><h4>Agentic AI</h4><p>Autonomous agents that act on the unified customer view — personalizing, deciding, and orchestrating engagement in real time, with guardrails.</p></div>
+      </div>
+    </div>
+
+    <div class="support reveal">
+      <div class="lbl">Supporting capabilities</div>
+      <p class="note">The engineering muscle behind every composable build — available as standalone work when you need it.</p>
+      <div class="cap-grid">
+        <div class="cap"><h4>Data &amp; Analytics</h4><p>Resilient pipelines, quality controls, and analytics that make your foundation activation-ready.</p></div>
+        <div class="cap"><h4>Cloud Services</h4><p>Scalable, secure cloud infrastructure for data and AI workloads.</p></div>
+        <div class="cap"><h4>Web &amp; Mobile</h4><p>Data-driven applications that bring activated data to customers and teams.</p></div>
+        <div class="cap"><h4>Staffing</h4><p>Specialized data and AI talent embedded alongside your team.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCELERATORS — CONFIRM: these came from your reference architecture. List only the frameworks that are genuinely Kyper Tech's own IP. -->
+<section class="acc-sec sec-pad dark" id="accelerators">
+  <div class="wrap">
+    <div class="reveal" style="max-width:700px">
+      <span class="kicker">Accelerators &amp; best practices</span>
+      <h2 class="sec-title">We don't start from scratch</h2>
+      <p class="sec-lead">Reusable frameworks and playbooks that compress timelines and de-risk every build.</p>
+    </div>
+    <div class="acc-grid reveal">
+      <div class="acc"><h4>Integration Framework</h4><p>Pre-built connectors and patterns for fast, reliable source integration.</p></div>
+      <div class="acc"><h4>Data Quality Framework</h4><p>Repeatable cleansing, validation, and monitoring.</p></div>
+      <div class="acc"><h4>Infra Abstraction</h4><p>Warehouse-agnostic foundations that keep you portable.</p></div>
+      <div class="acc"><h4>Workflow Blueprint</h4><p>Proven orchestration patterns for the composable stack.</p></div>
+      <div class="acc"><h4>Canned Reports</h4><p>Ready-made analytics that show value on day one.</p></div>
+    </div>
+    <div class="acc-best reveal">
+      <span class="lbl">Best practices baked in</span>
+      <div class="bp-chips"><span>Project &amp; Change Management</span><span>Business Process</span><span>Data Management</span><span>Analytics Use Cases</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="resources sec-pad" id="resources">
+  <div class="wrap">
+    <div class="reveal" style="max-width:640px">
+      <span class="kicker">Knowledge center</span>
+      <h2 class="sec-title">Ideas from our team</h2>
+    </div>
+    <div class="res-grid">
+      <a class="res reveal" href="#">
+        <div class="rt">CDP · 8 min</div>
+        <h4>Packaged vs. Composable CDP: Which Fits Retail?</h4>
+        <p>Why more retail and CPG brands are building customer data on the warehouse they already own.</p>
+      </a>
+      <a class="res reveal" href="#">
+        <div class="rt">Data · 11 min</div>
+        <h4>Building a Data Foundation That Lasts</h4>
+        <p>The architecture decisions that make or break a composable CDP before you write a line of code.</p>
+      </a>
+      <a class="res reveal" href="#">
+        <div class="rt">Agentic AI · 9 min</div>
+        <h4>Agentic AI on Top of Your Customer 360</h4>
+        <p>How autonomous agents turn a unified customer foundation into real-time decisions.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>Let's build your composable Customer Data Platform.</h2>
+    <p>Whether you're rethinking your data foundation or ready to build, let's talk about a composable platform designed around your brand — and the agentic AI that runs on it.</p>
+    <a href="mailto:info@kypertech.com" class="btn-dark">Get in Touch →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="logo footer-logo"><svg class="brand" role="img" aria-label="Kyper Tech"><use href="#kyperLogo"/></svg></div>
+        <p class="foot-blurb">A Data &amp; AI services company that helps Retail &amp; CPG brands consult, strategize, build, and activate Composable Customer Data Platforms on their own data foundation, augmented with agentic AI. Headquartered in Austin, with global delivery.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>What we do</h5>
+          <a href="#platform">Composable CDP</a>
+          <a href="#capabilities">System of Insight</a>
+          <a href="#capabilities">System of Engagement</a>
+          <a href="#capabilities">Agentic AI</a>
+          <a href="#accelerators">Accelerators</a>
+        </div>
+        <div class="foot-col">
+          <h5>Company</h5>
+          <a href="#about">About</a>
+          <a href="#how">How We Work</a>
+          <a href="#resources">Resources</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="foot-col">
+          <h5>Connect</h5>
+          <a href="https://www.linkedin.com/company/kypertech/">LinkedIn</a>
+          <a href="mailto:info@kypertech.com">info@kypertech.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Kyper Tech. All rights reserved.</span>
+      <span>Data · AI · Composable CDP</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach((e)=>{
+      if(e.isIntersecting){
+        const items = [...e.target.parentElement.querySelectorAll('.reveal')];
+        e.target.style.transitionDelay = (Math.min(items.indexOf(e.target),5)*0.08)+'s';
+        e.target.classList.add('in'); io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  document.querySelector('.menu-btn').addEventListener('click',()=>{
+    const n=document.querySelector('.navlinks');
+    n.style.display=getComputedStyle(n).display==='none'?'flex':'none';
+  });
+</script>
+</body>
+</html>
