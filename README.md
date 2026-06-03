@@ -1,7 +1,7 @@
 # Kyper Tech — Homepage
 
 Static marketing homepage for Kyper Tech, a Data & AI services company
-specializing in **Composable Customer Data Platforms for Retail & CPG**,
+specializing in **Composable Customer Data Platforms for Consumer Businesses**,
 activated with agentic AI.
 
 Single self-contained file — no build step, no dependencies to install.

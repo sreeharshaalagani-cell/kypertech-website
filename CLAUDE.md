@@ -10,7 +10,7 @@ framework, no package install. Open it in a browser and it runs.
 ## Positioning (the message the site must protect)
 - Kyper Tech is a **Data & AI services company** — NOT a product/CDP vendor.
 - **Specialization:** building **Composable Customer Data Platforms (CDPs)**
-  for **Retail & CPG** brands, on the client's own data foundation.
+  for **consumer businesses**, on the client's own data foundation.
 - **Engagement model:** four phases — **Consult → Strategize → Build → Activate**.
 - The **System of Engagement** is driven by BOTH agentic AI AND partnerships/
   integration with off-the-shelf CDP platforms. Do not frame Kyper Tech as
